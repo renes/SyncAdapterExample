@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="someSharedPrefKey"
+        android:summary="Please check to enable notifications"
+        android:title="Notifications" />
+
+    <EditTextPreference
+        android:defaultValue="someDefaultValue"
+        android:key="someSharedPrefKey2"
+        android:summary="Please enter your Email"
+        android:title="Email" >
+    </EditTextPreference>
+
+</PreferenceScreen>

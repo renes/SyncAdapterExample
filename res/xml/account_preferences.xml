@@ -1,0 +1,12 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+    <PreferenceCategory android:title="General Settings" />
+    <PreferenceScreen
+        android:key="accountSettings"
+        android:summary="Change Sync, Name, etc."
+        android:title="Settings for your App" >
+        <intent
+            android:action="at.technikum.android.example"
+            android:targetClass="at.technikum.android.example.PrefActivity"
+            android:targetPackage="at.technikum.android.example" />
+    </PreferenceScreen>
+</PreferenceScreen>

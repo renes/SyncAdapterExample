@@ -1,0 +1,77 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="at.technikum.android.example"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="15"
+        android:targetSdkVersion="15" />
+
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
+
+    <application
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="at.technikum.android.example.MainActivity"
+            android:label="@string/title_activity_main" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="at.technikum.android.example.LoginActivity"
+            android:label="@string/title_activity_main" >
+        </activity>
+        <activity
+            android:name="at.technikum.android.example.PrefActivity"
+            android:label="@string/title_activity_main" >
+        </activity>
+
+        <!-- Used for authentication -->
+        <service
+            android:name="at.technikum.android.example.service.AccountAuthenticatorService"
+            android:exported="true"
+            android:process=":auth" >
+            <intent-filter>
+                <action android:name="android.accounts.AccountAuthenticator" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.accounts.AccountAuthenticator"
+                android:resource="@xml/authenticator" />
+        </service>
+        
+        <!-- Used for sync -->
+        <service
+            android:name="at.technikum.android.example.sync.SyncAdapter"
+            android:exported="true"
+            android:process=":sync" >
+            <intent-filter>
+                <action android:name="android.content.SyncAdapter" >
+                </action>
+            </intent-filter>
+
+            <meta-data
+                android:name="android.content.SyncAdapter"
+                android:resource="@xml/sync_somedata" >
+            </meta-data>
+        </service>
+
+        <provider
+            android:exported="false"
+            android:name="at.technikum.android.example.sync.SomeDataContentProvider"
+            android:authorities="at.technikum.android.example.someData"
+            android:enabled="true"
+            android:label="SomeData"
+            android:syncable="true" >
+        </provider>
+    </application>
+
+</manifest>
